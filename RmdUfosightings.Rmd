@@ -1,0 +1,61 @@
+---
+title: "RmdUfosightings"
+author: "Thomas Maher"
+date: "August 19, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Rufosightings
+
+The best part of the Rufosightings R package is the report itself, found here **Rufosightings$description**.  Even so, the other columns can reveal other details of interest. 
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+library(devtools)
+```
+
+We will make plots with the Rufosightings package. 
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+install_github("botanyhelp/Rufosightings")
+library(Rufosightings)
+```
+
+## Visualizing UFO Sightings
+
+### Shape of Flying Object
+
+We can see that these shapes of UFO are the most frequently reported:
+
+* light
+* triangle
+* unknown
+* disk
+* circle
+
+```{r echo=FALSE}
+barplot(table(Rufosightings$shape),horiz = T,las=1, col=c(rainbow(length(levels(Rufosightings$shape)))) )
+```
+
+We can also see that the construction of the data frame has some quality control problems. 
+
+### Month of Year
+
+We can see that the northern hemisphere's summer months tend to show the highest number of reports
+
+```{r echo=FALSE}
+barplot(table(Rufosightings$sighted_at_month),horiz = T,las=1)
+```
+
+### Day of Month
+
+We can see that the 1st and 15th of the month is over represented. The 4th of July might give a bump and new years day might improve the numbers for the 1st day.
+
+```{r echo=FALSE}
+barplot(table(Rufosightings$sighted_at_day),horiz = T,las=1 )
+```
+
+### 
